@@ -1,16 +1,11 @@
 package app.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AnimalsCage {
-
-    @Autowired
-    @Qualifier("Dog")
     private Animal animal;
-    @Autowired
     private Timer timer;
 
     public void whatAnimalSay() {
@@ -21,7 +16,21 @@ public class AnimalsCage {
         System.out.println("________________________");
     }
 
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    @Bean
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
+
     public Timer getTimer() {
         return timer;
+    }
+
+    @Bean
+    public void setTimer(Timer timer) {
+        this.timer = timer;
     }
 }
